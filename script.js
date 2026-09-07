@@ -7,15 +7,38 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Theme toggle
-  const themeToggle = doc.getElementById("themeToggle");
-  const themeIcon = themeToggle ? themeToggle.querySelector("i") : null;
+  const themeToggle = document.getElementById("themeToggle");
 
-  if (themeToggle && themeIcon) {
-    themeToggle.addEventListener("click", () => {
-    body.classList.toggle("light-theme");
-    const light = body.classList.contains("light-theme");
-    themeIcon.className = light ? "bi bi-sun" : "bi bi-moon-stars";
-    });
+  if (themeToggle) {
+      const themeIcon = themeToggle.querySelector("i");
+
+      function updateThemeUI() {
+          const isLightTheme =
+              document.body.classList.contains("light-theme");
+
+          if (themeIcon) {
+              // Show the icon for the theme the user can switch TO
+              themeIcon.className = isLightTheme
+                  ? "bi bi-moon-stars"
+                  : "bi bi-sun";
+          }
+
+          themeToggle.setAttribute(
+              "aria-label",
+              isLightTheme
+                  ? "Switch to dark theme"
+                  : "Switch to light theme"
+          );
+      }
+
+      // Set correct icon on initial page load
+      updateThemeUI();
+
+      // Toggle theme on click
+      themeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("light-theme");
+          updateThemeUI();
+      });
   }
 
   // Typewriter
