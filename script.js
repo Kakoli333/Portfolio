@@ -7,29 +7,43 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Theme toggle
-  const themeToggle = document.getElementById("themeToggle");
+  // ============================================================
+// THEME TOGGLE
+// ============================================================
 
-  if (themeToggle) {
-      const themeIcon = themeToggle.querySelector("i");
+const themeToggle = document.getElementById("themeToggle");
 
-      function updateThemeUI() {
-          const isLightTheme =
-              document.body.classList.contains("light-theme");
+if (themeToggle) {
+    const themeIcon = themeToggle.querySelector("i");
 
-          if (themeIcon) {
-              // Show the icon for the theme the user can switch TO
-              themeIcon.className = isLightTheme
-                  ? "bi bi-moon-stars"
-                  : "bi bi-sun";
-          }
+    function updateThemeUI() {
+        const isLightTheme =
+            document.body.classList.contains("light-theme");
 
-          themeToggle.setAttribute(
-              "aria-label",
-              isLightTheme
-                  ? "Switch to dark theme"
-                  : "Switch to light theme"
-          );
-      }
+        if (themeIcon) {
+            // Show the icon for the theme the user can switch TO
+            themeIcon.className = isLightTheme
+                ? "bi bi-moon-stars"
+                : "bi bi-sun";
+        }
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isLightTheme
+                ? "Switch to dark theme"
+                : "Switch to light theme"
+        );
+    }
+
+    // Set correct icon on initial page load
+    updateThemeUI();
+
+    // Toggle theme on click
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        updateThemeUI();
+    });
+}
 
       // Set correct icon on initial page load
       updateThemeUI();
