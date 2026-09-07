@@ -7,53 +7,42 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Theme toggle
-  // ============================================================
-// THEME TOGGLE
-// ============================================================
-
-const themeToggle = document.getElementById("themeToggle");
-
-if (themeToggle) {
-    const themeIcon = themeToggle.querySelector("i");
-
-    function updateThemeUI() {
-        const isLightTheme =
-            document.body.classList.contains("light-theme");
-
-        if (themeIcon) {
-            // Show the icon for the theme the user can switch TO
-            themeIcon.className = isLightTheme
-                ? "bi bi-moon-stars"
-                : "bi bi-sun";
-        }
-
-        themeToggle.setAttribute(
-            "aria-label",
-            isLightTheme
-                ? "Switch to dark theme"
-                : "Switch to light theme"
-        );
-    }
-
-    // Set correct icon on initial page load
-    updateThemeUI();
-
-    // Toggle theme on click
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light-theme");
-        updateThemeUI();
-    });
-}
-
+  
+  const themeToggle = document.getElementById("themeToggle");
+  
+  if (themeToggle) {
+      const themeIcon = themeToggle.querySelector("i");
+  
+      function updateThemeUI() {
+          const isLightTheme =
+              document.body.classList.contains("light-theme");
+  
+          if (themeIcon) {
+              // Show the icon for the theme the user can switch TO
+              themeIcon.className = isLightTheme
+                  ? "bi bi-moon-stars"
+                  : "bi bi-sun";
+          }
+  
+          themeToggle.setAttribute(
+              "aria-label",
+              isLightTheme
+                  ? "Switch to dark theme"
+                  : "Switch to light theme"
+          );
+      }
+  
       // Set correct icon on initial page load
       updateThemeUI();
-
+  
       // Toggle theme on click
       themeToggle.addEventListener("click", () => {
           document.body.classList.toggle("light-theme");
           updateThemeUI();
       });
   }
+
+      
 
   // Typewriter
   const words = [
