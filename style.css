@@ -148,6 +148,10 @@ body.light-theme .navbar-toggler { filter: invert(1); }
   max-width: 900px;
 }
 
+.typewriter-line {
+  display: inline;
+}
+
 .typewriter { color: var(--accent); font-weight: 700; }
 .cursor { animation: blink .8s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
@@ -543,6 +547,20 @@ body.light-theme .btn-outline-light {
   .hero-section .min-vh-100 { min-height: auto !important; padding-top: 145px !important; padding-bottom: 95px !important; }
   .profile-visual { margin-top: 20px; }
   .research-score-side { min-height: 380px; }
+
+  /* Keep the animated phrase on its own stable line on tablets and phones. */
+  .hero-lead .typewriter-line {
+    display: block;
+    width: 100%;
+    min-height: 2.8em;
+    margin-top: .35rem;
+    line-height: 1.25;
+  }
+
+  .hero-lead .typewriter,
+  .hero-lead .cursor {
+    display: inline;
+  }
 }
 
 @media (max-width: 767.98px) {
